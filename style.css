@@ -90,7 +90,7 @@ main {
 
 .contentYes {
 	border-radius: 8px;
-	border-width: 1.5px;
+	border: 2px solid darkorange;
 }
 
 h2 {
@@ -137,9 +137,9 @@ footer {
 	background-color: darkgrey;
 }
 
-.highlighted {
+mark {
 	background-color: red;
-	text-emphasis: strong;
+	font-weight: bold;
 }
 
 .seperated {

@@ -176,33 +176,7 @@ function stylizeSection(targetSection) {
 
 	//go through previous and current searches and highlight the searched word
 
-	const totalTextInHTML = targetSection.innerHTML;
-	//take all of the HTML in a section of a DOM and truns it into a string so we can read/change it
-
-	/*This is something that I had look up. Essentially there is no other good way to go through
-        a string checking for multiple potential matches and replacing them: .split(" ") then iterating
-        through the array and replacing each match would be prone to errors around grammatical
-        syntax like periods. That would also run through the string several times adding
-        unneeded complexity*/
-	const matchingExpression = new RegExp(
-		`\\b(${previousSearchArray.join(`|`)})\\b`,
-		"gi"
-	);
-	/*What this does is create an expression that can match any part of the string without 
-        much hassle. \\b(checker)\\b lets us ignore surrounding syntax while still avoiding false
-        positives from our target being part of another word or being capitalized. Taking the array
-        and joining it with | allow the regular expression to check all of string for every string
-        in the array, this improves effeciency. */
-
-	//this is the expression being used to find and then replace the strings
-	const highlightedTextInHTML = totalTextInHTML.replace(
-		matchingExpression,
-		(correctString) => {
-			return `<span class = "highlighted">${correctString}</span>`;
-		}
-	);
-
-	targetSection.innerHTML = highlightedTextInHTML; //return updated HTML
+	new Mark(document.querySelector("#definitions")).mark(previousSearchArray);
 }
 
 //function that checks errors and updates users on erros that have occured
